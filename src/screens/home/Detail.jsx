@@ -29,7 +29,7 @@ const Screen = (props) => {
             width: '100%',
             height: 350,
           }}
-          source={(props) => {IMAGE_COURS }}
+          source={require('./cute.jpg')}
           //axios로 받아온 이미지를 source에 넣는다.
         />
         <TouchableOpacity
