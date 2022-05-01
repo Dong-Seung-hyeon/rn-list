@@ -58,13 +58,8 @@ const Home = () => {
 
   }, []);
 
-  // const handleClick = (e) => {
-  //   navigate('/edit', {state:e.target.value});
-  // }
-
-  const handlePressItem = ()=>{
-    console.log('aaaaaa')
-    navigation.navigate('Detail')
+  const handlePressItem = (item)=>{
+    navigation.navigate('Detail', {item})
 
   }
   return (
@@ -78,12 +73,12 @@ const Home = () => {
         data={dog}
         renderItem={({ item }) => (
 
-          <TouchableOpacity onPress={()=>handlePressItem()}> 
+          <TouchableOpacity onPress={()=>handlePressItem(item)}> 
             <ListItem>
               {/*<TitleView>
                 <Title>{item.PROTECT_PLC}</Title>
               </TitleView>*/}
-              <Picture source={{uri: item.IMAGE_COURS }}/>
+              <Picture source={{uri: item.THUMB_IMAGE_COURS }}/>
               <Contents> 
                 품종 : {item.SPECIES_NM} {"\n"} 
                 성별 : {item.SEX_NM} {"\n"} 

@@ -57,9 +57,8 @@ const Home = () => {
 
   }, []);
 
-  const handlePressItem = ()=>{
-    console.log('aaaaaa')
-    navigation.navigate('Detail')
+  const handlePressItem = (item)=>{
+    navigation.navigate('Detail', {item})
 
   }
   return (
@@ -73,7 +72,7 @@ const Home = () => {
         data={dog}
         renderItem={({ item }) => (
 
-          <TouchableOpacity onPress={()=>handlePressItem()}> 
+          <TouchableOpacity onPress={()=>handlePressItem(item)}> 
             <ListItem>
               {/*<TitleView>
                 <Title>{item.PROTECT_PLC}</Title>
