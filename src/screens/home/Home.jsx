@@ -33,7 +33,7 @@ const Home = () => {
     (async (lat, lon) => {
       try {
         const data = await axios.get(
-            `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${API_KEY}&Type=json&pIndex=1&pSize=&`,
+            `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${API_KEY}&Type=json&pIndex=1&pSize=&SPECIES_NM=개&STATE_NM=보호중`,
             )
         // console.log('data', data.data.AbdmAnimalProtect[1].row)
           console.log('useEffect data update Completed')
@@ -78,7 +78,7 @@ const Home = () => {
               {/*<TitleView>
                 <Title>{item.PROTECT_PLC}</Title>
               </TitleView>*/}
-              <Picture source={{uri: item.THUMB_IMAGE_COURS }}/>
+              <Picture source={{uri: item.IMAGE_COURS }}/>
               <Contents> 
                 품종 : {item.SPECIES_NM} {"\n"} 
                 성별 : {item.SEX_NM} {"\n"} 
