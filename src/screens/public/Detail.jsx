@@ -73,7 +73,7 @@ const Screen = (props) => {
           onPress={() => {navigation.goBack();}
             //이 부분에 터치액션 정의
           }>
-          <Ionicons name="home" color={'#000000'} size={30} />
+          <Ionicons name="home" color={'#F6EBFC'} size={30} />
         </TouchableOpacity>
         <View style={{ height: 2, backgroundColor: '#000000' }} />
         <View
