@@ -21,7 +21,7 @@ const Home = () => {
 
   const navigation = useNavigation();
 
-  const API_KEY = "37b635865f1b47e6a9d89e1ce7cc4ff9";
+  const API_KEY = "5256496a4a524a9eaa7b246b0adcd8fa";
   const lat = 38;
   const lon = 128;
 
@@ -32,7 +32,7 @@ const Home = () => {
     (async (lat, lon) => {
       try {
         const data = await axios.get(
-            `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${API_KEY}&Type=json&pIndex=1&pSize=&`,
+            `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${API_KEY}&Type=json&pIndex=1&pSize=&SPECIES_NM=개&STATE_NM=보호중`,
             )
         // console.log('data', data.data.AbdmAnimalProtect[1].row)
           console.log('useEffect data update Completed')

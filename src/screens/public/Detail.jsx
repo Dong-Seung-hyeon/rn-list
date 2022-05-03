@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
-  BackHandler,
   ScrollView
 } from 'react-native';
 
@@ -14,45 +13,17 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Linking } from 'react-native';
 
-//API request
-import axios from 'axios';
-
-//ionicons 모듈사용
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { Route } from 'react-router-dom';
+//ionicons 모듈사용
 
-//icons
-import { FontAwesome } from '@expo/vector-icons';
-
-const mail = "010-1234-5678"
-
-const AIP_KEY = "37b635865f1b47e6a9d89e1ce7cc4ff9";
-const lat = 38;
-const lon = 128;
-
-(async (lat, lon) => {
-  try {
-    const data = await axios.get(
-      `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${API_KEY}&Type=json&pIndex=1&pSize=&`,
-    )
-    console.log('useEffect data update Completed')
-       if (mounted) {
-          let _main = data.data.AbdmAnimalProtect[1].row;
-
-          setDog(_main);
-          setIsLoading(false);
-        }
-
-      } catch (error) {
-        console.log(error)
-        Alert.alert("강아지 정보를 읽어올 수 없습니다.")
-        setError(true);
-        setIsLoading(false);
-      }
-    })(lat, lon)
+const phoneNumber = "010-1234-5678"
+//const phoneNumber = {uri: item.IMAGE_COURS }
 
 const Screen = (props) => {
+  const Detail = ({navigation, Route})
   const navigation = useNavigation();
-
+  
   const item = props.route.params.item
   console.log(props.route.params.item)
 
@@ -82,19 +53,18 @@ const Screen = (props) => {
             alignItems: 'center',
             paddingVertical: 10,
           }}>
-          {/*<Ionicons
+          <Ionicons
             style={{ marginLeft: 20 }}
             name="ios-person"
             color={'#000000'}
-            size={45}
-        />*/}
-        <FontAwesome name="user-circle" size={30} color="black" style={{marginLeft:20}}/>
+            size={30}
+          />
           {/* axios로 받아온 제목을 Text 컴포넌트 사이에 넣는다. */}
           <Text style={styles.title} >{item.SHTER_NM }</Text>
         </View>
         <View style={{ height: 2, backgroundColor: '#000000' }} />
           {/* axios로 받아온 내용을 Text 컴포넌트 사이에 넣는다. */}
-          <ScrollView>
+        <ScrollView>
         <Text style={styles.content}>
                 발견장소 : {item.DISCVRY_PLC_INFO} {"\n"} 
                 상태 : {item.STATE_NM} {"\n"} 
