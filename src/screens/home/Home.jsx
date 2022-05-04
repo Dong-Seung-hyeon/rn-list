@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Text, FlatList, Alert, Pressable, Touchable, TouchableOpacity} from "react-native";
+import { 
+  Text, 
+  FlatList, 
+  Alert, 
+  TouchableOpacity
+} from "react-native";
 import styled from "styled-components";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";

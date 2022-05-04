@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -12,6 +13,8 @@ import UploadStack from './uploadRouter/Upload';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +36,7 @@ const Root = ({ navigation }) => {
       />
       <Tab.Screen 
       name="가정분양" 
+      Align = "center" or center
       component={PublicStack} 
       options={{tabBarIcon: () => (
         <FontAwesome5 name="home" size={24} color="black" />
@@ -42,7 +46,19 @@ const Root = ({ navigation }) => {
       <Tab.Screen
       name="새 게시물"
       component={UploadStack} 
-      options={{tabBarIcon: () => (
+      options={{
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => alert('Back!') }>
+          <AntDesign name="left" size={24} color="black" style={{paddingLeft:10}}/>
+          </TouchableOpacity>
+        ), 
+        headerTitleAlign: "center",
+        headerRight: () => (
+          <TouchableOpacity onPress={() => alert('Upload!') }>
+          <Feather name="upload" size={24} color="black" style={{paddingRight:15}}/>
+          </TouchableOpacity>
+        ),
+        tabBarIcon: () => (
         <Ionicons name="add-circle" size={30} color="black" />
         ),
         }}

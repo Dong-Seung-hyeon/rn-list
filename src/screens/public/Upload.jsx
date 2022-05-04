@@ -7,7 +7,6 @@ import Header from '../../components/Header'
 const Detail = () => {
   return (
     <View>
-      <Header title='홈' />
       <Text> 업로드화면 입니다. </Text>
     </View>
   );
