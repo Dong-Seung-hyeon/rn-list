@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //stacks
@@ -17,8 +17,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
+// const usenavigation = useNavigation();
 
 const Root = ({ navigation }) => {
+  const usenavigation = useNavigation();
+
   return (
     <Tab.Navigator
     tabBarOptions={{
@@ -48,7 +51,7 @@ const Root = ({ navigation }) => {
       component={UploadStack} 
       options={{
         headerLeft: () => (
-          <TouchableOpacity onPress={() => alert('Back!') }>
+          <TouchableOpacity onPress={() => {usenavigation.goBack();} }>
           <AntDesign name="left" size={24} color="black" style={{paddingLeft:10}}/>
           </TouchableOpacity>
         ), 

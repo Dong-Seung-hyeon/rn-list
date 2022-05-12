@@ -79,7 +79,6 @@ const Screen = (props) => {
                 ※ 공고 종료일자 : {item.PBLANC_END_DE} {"\n"}
                 {"\n"}
                 ※ 보호소 도로명주소 : {"\n"}{item.PROTECT_PLC} </Text>
-        <View style={{ height: 2, backgroundColor: '#000000' }} />
         </ScrollView>
         <View style={{ height: 2, backgroundColor: '#000000' }} />
         <TouchableOpacity style={styles.buttonContainer} onPress={() => {Linking.openURL(`sms:${item.SHTER_TELNO}`)}}>

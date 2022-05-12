@@ -38,6 +38,7 @@ const Home = () => {
     (async (lat, lon) => {
       try {
         const data = await axios.get(
+          // `http://localhost:8080/api/v1/center`
             `https://openapi.gg.go.kr/AbdmAnimalProtect?KEY=${API_KEY}&Type=json&pIndex=1&pSize=&SPECIES_NM=개&STATE_NM=보호중`,
             )
         // console.log('data', data.data.AbdmAnimalProtect[1].row)

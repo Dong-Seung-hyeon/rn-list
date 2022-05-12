@@ -17,9 +17,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Route } from 'react-router-dom';
 //ionicons 모듈사용
 
-const phoneNumber = "010-1234-5678"
-//const phoneNumber = {uri: item.IMAGE_COURS }
-
 const Screen = (props) => {
   const Detail = ({navigation, Route})
   const navigation = useNavigation();
@@ -79,7 +76,6 @@ const Screen = (props) => {
                 ※ 공고 종료일자 : {item.PBLANC_END_DE} {"\n"}
                 {"\n"}
                 ※ 보호소 도로명주소 : {"\n"}{item.PROTECT_PLC} </Text>
-        <View style={{ height: 2, backgroundColor: '#000000' }} />
         </ScrollView>
         <View style={{ height: 2, backgroundColor: '#000000' }} />
         <TouchableOpacity style={styles.buttonContainer} onPress={() => {Linking.openURL(`tel:${item.SHTER_TELNO}`)}}>
