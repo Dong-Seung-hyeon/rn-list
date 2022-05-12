@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -14,7 +14,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 // const usenavigation = useNavigation();
@@ -57,8 +56,11 @@ const Root = ({ navigation }) => {
         ), 
         headerTitleAlign: "center",
         headerRight: () => (
-          <TouchableOpacity onPress={() => alert('Upload!') }>
-          <Feather name="upload" size={24} color="black" style={{paddingRight:15}}/>
+          <TouchableOpacity
+            onPress={() => {
+              //이 부분에 업로드 액션 정의
+            }}>
+            <Text style={styles.buttonText} onPress={() => alert('Upload!') }>{'업로드'}</Text>
           </TouchableOpacity>
         ),
         tabBarIcon: () => (
@@ -85,3 +87,11 @@ export default function index() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonText: {
+    fontSize: 20,
+    color: '#F3A7FF',
+    marginRight: 15,
+  },
+})
