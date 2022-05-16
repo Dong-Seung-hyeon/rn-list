@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -17,12 +17,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Screen = () => {
   //setImageList를 이용해 이미지 추가.
-  const [imageList, setImageList] = useState([
-    {
-      uri: 'setImageList',
-    },
-    
-  ]);
+  // const [imageList, setImageList] = useState([]);
+  const [imageList, setImageList] = useState([]);
 
   const pickImage = async () => {
     console.log('이미지 선택');
@@ -31,44 +27,55 @@ const Screen = () => {
       allowsEditing: true,
       aspect: [4, 4],
       quality: 1,
-    })
+    });
     getImageUrl(imageData);
   };
-  const getImageUrl = async (imageData) => {
-    setImageUri(imageData.uri);
-  }
+
+  // const getImageUrl = (imageData) => {
+  //   setImageList(imageData.uri);
+  //   console.log(imageList);
+  //   console.log(imageData);
+  // };
+
+  useEffect(() => console.log('imageList', imageList), [imageList]);
+
+  const getImageUrl = (imageData) => {
+    setImageList((prev) => [...prev, { uri: imageData.uri }]);
+  };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#ffffff'}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <View style={styles.container}>
-        <View style={styles.header}>
-        </View>
-        <View style={{height: 2, backgroundColor: '#CCCCCC'}} />
+        <View style={styles.header}></View>
+        <View style={{ height: 2, backgroundColor: '#CCCCCC' }} />
         <View style={styles.imageList}>
           <ScrollView horizontal={true}>
             <TouchableOpacity
               style={styles.buttonCamera}
-              onPress={() => pickImage()
+              onPress={
+                () => pickImage()
                 //퍼미션 체크 & 갤러리 호출 코드 작성
-              }>
+              }
+            >
               <Ionicons name="camera" color={'#000000'} size={30} />
               <Text>{`${imageList.length}/10`}</Text>
             </TouchableOpacity>
             {imageList.map((item, index) => {
+              console.log(item.uri);
               return (
                 <Image
                   key={index}
                   style={styles.image}
-                  source={{uri: item.uri}}
+                  source={{ uri: item.uri }}
                   resizeMode={'cover'}
                 />
               );
             })}
           </ScrollView>
         </View>
-        <View style={{height: 2, backgroundColor: '#CCCCCC'}} />
+        <View style={{ height: 2, backgroundColor: '#CCCCCC' }} />
         <TextInput style={styles.price} placeholder={'책임비'} />
-        <View style={{height: 2, backgroundColor: '#CCCCCC'}} />
+        <View style={{ height: 2, backgroundColor: '#CCCCCC' }} />
         <TextInput
           style={styles.content}
           placeholder={'게시글 내용을 작성해 주세요.'}
